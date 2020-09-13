@@ -38,6 +38,9 @@ def train_func(net, train_iter, test_iter, num_epochs, lr,
     print(f'{metric[2] * num_epochs / timer.sum():.1f} examples/sec '
           f'on {str(device)}')
 
+print("------------------------------------------------")
+print("Batch norm")
+
 def batch_norm(X, gamma, beta, moving_mean, moving_var, eps, momentum):
     if not torch.is_grad_enabled():
         X_hat = (X - moving_mean) / torch.sqrt(moving_var + eps)
@@ -107,3 +110,16 @@ net = nn.Sequential(
     nn.Linear(120, 84), nn.BatchNorm1d(84), nn.Sigmoid(),
     nn.Linear(84, 10))
 
+
+print("------------------------------------------------")
+print("Gradient clipping")
+
+def grad_clipping(model, theta):
+    if isinstance(model, nn.Module):
+        params = [p for p in model.parameters() if p.requires_grad]
+    else:
+        params = model.params
+    norm = torch.sqrt(sum(torch.sum((p.grad ** 2)) for p in params))
+    if norm > theta:
+        for param in params:
+            param.grad[:] *= theta / norm
