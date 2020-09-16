@@ -247,9 +247,9 @@ def train_func(net, train_iter, test_iter, num_epochs, lr,
 
 print("train")
 batch_size = 256
-# train_iter, test_iter = d2l.load_data_fashion_mnist(batch_size=batch_size)
+train_iter, test_iter = d2l.load_data_fashion_mnist(batch_size=batch_size)
 lr, num_epochs = 0.9, 2
-# train_func(net, train_iter, test_iter, num_epochs, lr)
+train_func(net, train_iter, test_iter, num_epochs, lr)
 
 
 print("-------------------------------------------")
@@ -277,10 +277,10 @@ for layer in net:
     print(layer.__class__.__name__,'Output shape:\t',X.shape)
 
 batch_size = 128
-# train_iter, test_iter = d2l.load_data_fashion_mnist(batch_size, resize=224)
+train_iter, test_iter = d2l.load_data_fashion_mnist(batch_size, resize=224)
 
 lr, num_epochs = 0.01, 2 
-# train_func(net, train_iter, test_iter, num_epochs, lr)
+train_func(net, train_iter, test_iter, num_epochs, lr)
 print("\"train\"")
 
 
@@ -323,9 +323,9 @@ ratio = 4
 small_conv_arch = [(pair[0], pair[1] // ratio) for pair in conv_arch]
 net = vgg(small_conv_arch)
 
-lr, num_epochs, batch_size = 0.05, 10, 128
-# train_iter, test_iter = d2l.load_data_fashion_mnist(batch_size, resize=224)
-# train_func(net, train_iter, test_iter, num_epochs, lr)
+lr, num_epochs, batch_size = 0.05, 1, 128
+train_iter, test_iter = d2l.load_data_fashion_mnist(batch_size, resize=224)
+train_func(net, train_iter, test_iter, num_epochs, lr)
 print("\"train\"")
 
 
@@ -358,9 +358,9 @@ for layer in net:
     X = layer(X)
     print(layer.__class__.__name__,'output shape:\t', X.shape)
 
-lr, num_epochs, batch_size = 0.1, 10, 128
-# train_iter, test_iter = d2l.load_data_fashion_mnist(batch_size, resize=224)
-# train_func(net, train_iter, test_iter, num_epochs, lr)
+lr, num_epochs, batch_size = 0.1, 1, 128
+train_iter, test_iter = d2l.load_data_fashion_mnist(batch_size, resize=224)
+train_func(net, train_iter, test_iter, num_epochs, lr)
 
 
 print("-------------------------------------------")
@@ -417,9 +417,9 @@ for layer in net:
     X = layer(X)
     print(layer.__class__.__name__,'output shape:\t', X.shape)
 
-lr, num_epochs, batch_size = 0.1, 10, 128
-# train_iter, test_iter = d2l.load_data_fashion_mnist(batch_size, resize=96)
-# train_func(net, train_iter, test_iter, num_epochs, lr)
+lr, num_epochs, batch_size = 0.1, 1, 128
+train_iter, test_iter = d2l.load_data_fashion_mnist(batch_size, resize=96)
+train_func(net, train_iter, test_iter, num_epochs, lr)
 
 
 print("-------------------------------------------")
@@ -492,9 +492,9 @@ for layer in net:
     X = layer(X)
     print(layer.__class__.__name__,'output shape:\t', X.shape)
 
-lr, num_epochs, batch_size = 0.05, 10, 256
-# train_iter, test_iter = d2l.load_data_fashion_mnist(batch_size, resize=96)
-# train_func(net, train_iter, test_iter, num_epochs, lr)
+lr, num_epochs, batch_size = 0.05, 1, 256
+train_iter, test_iter = d2l.load_data_fashion_mnist(batch_size, resize=96)
+train_func(net, train_iter, test_iter, num_epochs, lr)
 
 
 print("-------------------------------------------")
@@ -563,11 +563,8 @@ net = nn.Sequential(
     nn.Flatten(),
     nn.Linear(num_channels, 10))
 
-lr, num_epochs, batch_size = 0.1, 10, 256
-# train_iter, test_iter = d2l.load_data_fashion_mnist(batch_size, resize=96)
-# train_func(net, train_iter, test_iter, num_epochs, lr)
-
-
-
+lr, num_epochs, batch_size = 0.1, 1, 256
+train_iter, test_iter = d2l.load_data_fashion_mnist(batch_size, resize=96)
+train_func(net, train_iter, test_iter, num_epochs, lr)
 
 
